@@ -1,0 +1,188 @@
+{
+	"metadata": {
+		"type": "App"
+	},
+	"project": {
+		"gammaInput": false,
+		"gammaOutput": false,
+		"shadows": true,
+		"editable": false,
+		"vr": false
+	},
+	"camera": {
+		"metadata": {
+			"version": 4.4,
+			"type": "Object",
+			"generator": "Object3D.toJSON"
+		},
+		"object": {
+			"uuid": "BA7A26C4-FB91-4815-BC45-9528D4631AAA",
+			"type": "PerspectiveCamera",
+			"name": "Camera",
+			"matrix": [0.823758602142334,-1.759393075673188e-9,0.5669407248497009,0,0.20014043152332306,0.9356164336204529,-0.2908018231391907,0,-0.5304390788078308,0.35301825404167175,0.7707220911979675,0,-7.392322063446045,4.9022722244262695,10.693593978881836,1],
+			"fov": 50,
+			"zoom": 1,
+			"near": 0.1,
+			"far": 10000,
+			"focus": 10,
+			"aspect": 1.8451025056947608,
+			"filmGauge": 35,
+			"filmOffset": 0
+		}
+	},
+	"scene": {
+		"metadata": {
+			"version": 4.4,
+			"type": "Object",
+			"generator": "Object3D.toJSON"
+		},
+		"geometries": [
+			{
+				"uuid": "0598729A-50FF-45EB-A7E7-0F85E69E04CA",
+				"type": "PlaneBufferGeometry",
+				"width": 2,
+				"height": 2
+			},
+			{
+				"uuid": "7297FC9C-24D5-44F2-A0CB-5FB009F30011",
+				"type": "SphereBufferGeometry",
+				"radius": 1,
+				"widthSegments": 32,
+				"heightSegments": 16,
+				"phiStart": 0,
+				"phiLength": 6.283185307179586,
+				"thetaStart": 0,
+				"thetaLength": 3.141592653589793
+			},
+			{
+				"uuid": "FD148291-19B8-4A32-9616-D111F454DE56",
+				"type": "BoxBufferGeometry",
+				"width": 1,
+				"height": 1,
+				"depth": 1
+			}],
+		"materials": [
+			{
+				"uuid": "73A300E1-D32E-4A4F-BF74-AB9CAD726EE9",
+				"type": "MeshStandardMaterial",
+				"color": 16777215,
+				"roughness": 0.5,
+				"metalness": 0.5,
+				"emissive": 0
+			},
+			{
+				"uuid": "949E8373-1D59-40AC-A6D7-B22EBBF8E8E9",
+				"type": "MeshStandardMaterial",
+				"color": 16777215,
+				"roughness": 0.5,
+				"metalness": 0.5,
+				"emissive": 0
+			},
+			{
+				"uuid": "2C654889-1B54-4D79-AE1E-A55D62666118",
+				"type": "MeshStandardMaterial",
+				"color": 8849860,
+				"roughness": 0.5,
+				"metalness": 0.5,
+				"emissive": 0
+			}],
+		"object": {
+			"uuid": "A4E2A966-0B9F-4FDF-B4E9-6743518C5BA3",
+			"type": "Scene",
+			"name": "Scene",
+			"matrix": [1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1],
+			"children": [
+				{
+					"uuid": "36C82D02-9FD1-418F-AF90-A93AD0910D7C",
+					"type": "Mesh",
+					"name": "Plane 1",
+					"receiveShadow": true,
+					"matrix": [30.165565490722656,0,0,0,0,7.016573601434026e-15,-31.599838256835938,0,0,1,2.220446049250313e-16,0,0,0,0,1],
+					"geometry": "0598729A-50FF-45EB-A7E7-0F85E69E04CA",
+					"material": "73A300E1-D32E-4A4F-BF74-AB9CAD726EE9"
+				},
+				{
+					"uuid": "8D1F358F-D04B-4DCB-9547-0CDCC02D2A93",
+					"type": "SpotLight",
+					"name": "SpotLight 1",
+					"castShadow": true,
+					"matrix": [1,0,0,0,0,1,0,0,0,0,1,0,-11,7,0,1],
+					"color": 6814751,
+					"intensity": 1,
+					"distance": 0,
+					"angle": 0.3141592653589793,
+					"decay": 1,
+					"penumbra": 0
+				},
+				{
+					"uuid": "060A8B54-607A-4C0F-8FFA-52D1298EEEC5",
+					"type": "SpotLight",
+					"name": "SpotLight 2",
+					"castShadow": true,
+					"matrix": [1,0,0,0,0,1,0,0,0,0,1,0,-11,7,5,1],
+					"color": 16716570,
+					"intensity": 1,
+					"distance": 0,
+					"angle": 0.3141592653589793,
+					"decay": 1,
+					"penumbra": 0
+				},
+				{
+					"uuid": "844BB56F-51EE-45AD-B343-730EB6054AE4",
+					"type": "SpotLight",
+					"name": "SpotLight 3",
+					"castShadow": true,
+					"matrix": [1,0,0,0,0,1,0,0,0,0,1,0,-11,7,-5,1],
+					"color": 2232570,
+					"intensity": 1,
+					"distance": 0,
+					"angle": 0.3141592653589793,
+					"decay": 1,
+					"penumbra": 0
+				},
+				{
+					"uuid": "2F549E1D-769F-4B05-9780-BCCF01B08F98",
+					"type": "Mesh",
+					"name": "Sphere 2",
+					"castShadow": true,
+					"receiveShadow": true,
+					"matrix": [1,0,0,0,0,1,0,0,0,0,1,0,0,1.009101390838623,0,1],
+					"geometry": "7297FC9C-24D5-44F2-A0CB-5FB009F30011",
+					"material": "949E8373-1D59-40AC-A6D7-B22EBBF8E8E9"
+				},
+				{
+					"uuid": "B7902B2C-D719-4BD3-9359-67F3DAC427C2",
+					"type": "Mesh",
+					"name": "Box 3",
+					"castShadow": true,
+					"receiveShadow": true,
+					"matrix": [1,0,0,0,0,1,0,0,0,0,1,0,4.927689552307129,1.8641318082809448,0,1],
+					"geometry": "FD148291-19B8-4A32-9616-D111F454DE56",
+					"material": "2C654889-1B54-4D79-AE1E-A55D62666118"
+				},
+				{
+					"uuid": "E7C3DE01-562D-4E06-B58C-D39B48A4834A",
+					"type": "PointLight",
+					"name": "PointLight 6",
+					"castShadow": true,
+					"matrix": [1,0,0,0,0,1,0,0,0,0,1,0,19.855863571166992,35.34950637817383,-24.76063346862793,1],
+					"color": 16777215,
+					"intensity": 0.36,
+					"distance": 0,
+					"decay": 0.56
+				}]
+		}
+	},
+	"scripts": {
+		"B7902B2C-D719-4BD3-9359-67F3DAC427C2": [
+			{
+				"name": "rotate",
+				"source": "function update( event ) {\n\tthis.rotation.x = event.time/30;\n\tthis.rotation.y = -event.time/30;\n}"
+			}],
+		"2F549E1D-769F-4B05-9780-BCCF01B08F98": [
+			{
+				"name": "bounce",
+				"source": "function update( event ) {\n\tthis.position.y = (Math.sin(event.time/30)+2);\n}"
+			}]
+	}
+}

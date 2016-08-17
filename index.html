@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>three.js</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<style>
+		body {
+			font-family: Helvetica, Arial, sans-serif;
+			font-size: 12px;
+			background-color: #000;
+			margin: 0px;
+			overflow: hidden;
+		}
+		#edit {
+			position: absolute;
+			bottom: 20px;
+			right: 20px;
+			padding: 8px;
+			color: #555;
+			background-color: #fff;
+			opacity: 0.5;
+		}
+		#edit:hover {
+			cursor: pointer;
+			opacity: 1;
+		}
+		</style>
+	</head>
+	<body ontouchstart="">
+		<script src="js/three.min.js"></script>
+		<script src="js/app.js"></script>
+		<script src="js/psquery.min.js"></script>
+		<script src="/socket.io/socket.io.js"></script>
+
+		<script>
+			var loader = new THREE.XHRLoader();
+			loader.load( 'app.json', function ( text ) { //Get everything we need
+				var json = JSON.parse( text ); //Parse the scene
+
+				var player = new APP.Player(); //Create the player
+				player.load( json ); //And load the scene into it
+				player.setSize( window.innerWidth, window.innerHeight ); //We're going to temporarily set a size, but we'll get that from the server later
+				//player.play(); //Don't play. I broke this function anyway...
+				window.player = player; //For debugging
+				player.animate(0); //For starters
+
+				document.body.appendChild( player.dom ); //Append the actual renderthing so we can see the frames
+
+				var socket = io('http://localhost:8120/'); //Connect to the server
+				socket.on("size",function(data) { //When we connect, we get the size info
+					player.setSize(data.width,data.height); //Set the size of the video
+					socket.emit("ready"); //Tell the server we're ready to render
+				});
+				socket.on("render",function(data) { //When we send ready, the server gives us a start frame and a length to do
+					console.log(data);
+					var startframe = data.startFrame;
+					var endframe = data.startFrame+data.length;
+					for(; startframe<=endframe; startframe++) { //Loop through all frames
+						console.log("Rendering frame ",startframe);
+						player.animate(startframe); //Render the frame
+						$.ajax("/postframe",{type:"POST",data:JSON.stringify({frame:startframe,data:document.getElementsByTagName("canvas")[0].toDataURL()})}); //Send the frame back to the server and move on
+					}
+					socket.emit("ready");
+				});
+				socket.on("done",function() {
+					console.log("done!");
+					socket.disconnect();
+				});
+			} );
+
+		</script>
+	</body>
+</html>
