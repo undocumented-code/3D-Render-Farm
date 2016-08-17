@@ -56,12 +56,24 @@
 					console.log(data);
 					var startframe = data.startFrame;
 					var endframe = data.startFrame+data.length;
-					for(; startframe<=endframe; startframe++) { //Loop through all frames
-						console.log("Rendering frame ",startframe);
+					function iterate() {
+						console.log("Rendering frame", startframe);
 						player.animate(startframe); //Render the frame
-						$.ajax("/postframe",{type:"POST",data:JSON.stringify({frame:startframe,data:document.getElementsByTagName("canvas")[0].toDataURL()})}); //Send the frame back to the server and move on
+						$.ajax("/postframe",{
+							type:"POST",
+							data:JSON.stringify({frame:startframe,data:document.getElementsByTagName("canvas")[0].toDataURL()}),
+							success:function() {
+								startframe++;
+								if(startframe>=endframe) {
+									console.log("emitting ready");
+									socket.emit("ready");
+									return;
+								}
+								else iterate();
+							}
+						}); //Send the frame back to the server and move on
 					}
-					socket.emit("ready");
+					iterate();
 				});
 				socket.on("done",function() {
 					console.log("done!");
