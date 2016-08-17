@@ -40,6 +40,7 @@ function handler (req, res) {
 }
 
 io.on('connection', function (socket) {
+  console.log(Date.now());
   socket.emit("size",settings);
   socket.on("ready",function() {
     if(nextstart>settings.length) {
@@ -81,6 +82,7 @@ function completeJob() {
 
   prc.on('close', function (code) {
       console.log('process exit code ' + code);
+      console.log(Date.now());
       process.exit();
   });
 }
