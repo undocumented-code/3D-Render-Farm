@@ -47,7 +47,7 @@
 
 				document.body.appendChild( player.dom ); //Append the actual renderthing so we can see the frames
 
-				var socket = io('http://192.168.1.68:8120/'); //Connect to the server
+				var socket = io('http://localhost:8120/'); //Connect to the server
 				socket.on("size",function(data) { //When we connect, we get the size info
 					player.setSize(data.width,data.height); //Set the size of the video
 					socket.emit("ready"); //Tell the server we're ready to render
